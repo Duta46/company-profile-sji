@@ -3,12 +3,19 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\ProfileController;
+<<<<<<< HEAD
 use App\Http\Controllers\Admin\TestimoniController;
 use App\Http\Controllers\Admin\PartnerController;
+=======
+use App\Http\Controllers\HomeController;
+>>>>>>> 9a55cfb16780485fa26a5fd7935dff5a1bd78b98
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/class-list', [HomeController::class, 'classlist'])->name('class-list');
 
 Route::get('/admin/login', [AuthController::class, 'index'])->name('admin.login');
 Route::post('/admin/login', [AuthController::class, 'login'])->name('admin.login.post');
