@@ -54,7 +54,7 @@
                         <span class="menu-title">Dashboard</span>
                     </a>
                 </div>
-                <div class="menu-item">
+                {{-- <div class="menu-item">
                     <a class="menu-link {{ Route::is('admin.kategori-test') ? 'active' : '' }}"
                         href="{{ route('admin.kategori-test') }}">
                         <span class="menu-icon">
@@ -62,14 +62,24 @@
                         </span>
                         <span class="menu-title">Partner</span>
                     </a>
-                </div>
+                </div> --}}
                 <div class="menu-item">
-                    <a class="menu-link {{ Route::is('admin.kategori') ? 'active' : '' }}"
-                        href="{{ route('admin.kategori') }}">
+                    <a class="menu-link {{ Route::is('Testimoni*') ? 'active' : '' }}"
+                        href="{{ route('Testimoni.index') }}">
                         <span class="menu-icon">
                             <i class="fa-solid fa-clipboard-list"></i>
                         </span>
-                        <span class="menu-title">Review</span>
+                        <span class="menu-title">Testimoni</span>
+                    </a>
+                </div>
+
+                <div class="menu-item">
+                    <a class="menu-link {{ Route::is('Partner*') ? 'active' : '' }}"
+                        href="{{ route('Partner.index') }}">
+                        <span class="menu-icon">
+                            <i class="fa-solid fa-clipboard-list"></i>
+                        </span>
+                        <span class="menu-title">Partner</span>
                     </a>
                 </div>
 
