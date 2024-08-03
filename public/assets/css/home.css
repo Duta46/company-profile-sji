@@ -1,5 +1,5 @@
 .logosji {
-    height: 86px;
+    height: 100px;
 }
 .bendera {
     height: 40px;
@@ -8,6 +8,16 @@
 .navbar-nav .nav-item {
     margin-right: 15px; /* Atur jarak antar item */
 }
+
+.navbar-nav .nav-link {
+    border: none !important;
+}
+
+.dropdown {
+    border: none !important;
+    outline: none !important;
+}
+
 .dropdown-menu .dropdown-item {
     display: flex;
     align-items: center;
@@ -17,14 +27,13 @@
     margin-right: 10px;
 }
 .banner {
-    width: 600px;
+    max-width: 100%;
     height: auto;
 }
-
-.logo-patner {
-    width: 120px;
+.logo-partner {
+    max-width: 100%;
     height: auto;
-}
+  }
 
 .img-fluid {
     padding-top: 20px;
