@@ -16,8 +16,7 @@
 </head>
 
 <body>
-
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img class="logosji" src="{{ asset('assets/images/logosji.png') }}" alt="">
@@ -85,24 +84,11 @@
             <div class="row">
                 <h2 class="mb-5">Our Partner</h2>
                 <div class="row justify-content-center">
-                    <div class="col-6 col-md-2 mb-3">
-                        <img class="logo-partner img-fluid" src="{{ asset('assets/images/lpk.png') }}" alt="Partner 1">
-                    </div>
-                    <div class="col-6 col-md-2 mb-3">
-                        <img class="logo-partner img-fluid" src="{{ asset('assets/images/multi.png') }}"
-                            alt="Partner 2">
-                    </div>
-                    <div class="col-6 col-md-2 mb-3">
-                        <img class="logo-partner img-fluid" src="{{ asset('assets/images/sbi.png') }}" alt="Partner 3">
-                    </div>
-                    <div class="col-6 col-md-2 mb-3">
-                        <img class="logo-partner img-fluid" src="{{ asset('assets/images/logo-irson.png') }}"
-                            alt="Partner 4">
-                    </div>
-                    <div class="col-6 col-md-2 mb-3">
-                        <img class="logo-partner img-fluid" src="{{ asset('assets/images/BHJ.png') }}"
-                            alt="Partner 5">
-                    </div>
+                    @foreach ($partners as $partner)
+                        <div class="col-6 col-md-2 mb-3">
+                            <img class="logo-partner img-fluid" src="{{ asset('storage/partner/' . $partner->image) }}" alt="{{ $partner->name }}">
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -140,7 +126,6 @@
             </div>
         </div>
     </section>
-
 
     <section class="bg-grey my-5 py-5">
         <div class="container text-start">
@@ -389,34 +374,34 @@
         }
     </script>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        function animateNumber(element, endValue, duration) {
-            const startValue = 0;
-            const range = endValue - startValue;
-            const stepTime = Math.abs(Math.floor(duration / range));
-            let startTime = null;
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            function animateNumber(element, endValue, duration) {
+                const startValue = 0;
+                const range = endValue - startValue;
+                const stepTime = Math.abs(Math.floor(duration / range));
+                let startTime = null;
 
-            function updateNumber(timestamp) {
-                if (!startTime) startTime = timestamp;
-                const progress = timestamp - startTime;
-                const currentValue = Math.min(Math.round((progress / duration) * range + startValue), endValue);
-                element.textContent = `${currentValue}+`;
-                if (progress < duration) {
-                    window.requestAnimationFrame(updateNumber);
+                function updateNumber(timestamp) {
+                    if (!startTime) startTime = timestamp;
+                    const progress = timestamp - startTime;
+                    const currentValue = Math.min(Math.round((progress / duration) * range + startValue), endValue);
+                    element.textContent = `${currentValue}+`;
+                    if (progress < duration) {
+                        window.requestAnimationFrame(updateNumber);
+                    }
                 }
+                window.requestAnimationFrame(updateNumber);
             }
-            window.requestAnimationFrame(updateNumber);
-        }
 
-        // Select all elements with class "count"
-        const elements = document.querySelectorAll('.count');
-        elements.forEach((element) => {
-            const endValue = parseInt(element.getAttribute('data-count'));
-            animateNumber(element, endValue, 1000); // Duration of 1 seconds
+            // Select all elements with class "count"
+            const elements = document.querySelectorAll('.count');
+            elements.forEach((element) => {
+                const endValue = parseInt(element.getAttribute('data-count'));
+                animateNumber(element, endValue, 1000); // Duration of 1 seconds
+            });
         });
-    });
-</script>
+    </script>
 
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

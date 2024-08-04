@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('title', 'Testimoni Aplikasi')
+@section('title', 'Partner')
 
 @section('page-title')
     <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
         <h1 class="page-heading d-flex text-dark fw-bold flex-column justify-content-center my-0">
-            Testimoni Aplikasi
+            Partner
         </h1>
     </div>
 @endsection
@@ -27,17 +27,17 @@
                     placeholder="Cari.." />
             </div>
             <div class="d-flex flex-stack">
-                <a type="button" class="btn btn-primary ms-2" href="{{ route('Testimoni.create') }}">
-                    Tambah Testimoni
+                <a type="button" class="btn btn-primary ms-2" href="{{ route('Partner.create') }}">
+                    Tambah Partner
                 </a>
             </div>
         </div>
         <div class="card-body pt-0">
-            <table id="testimoni-table" class="table align-middle table-row-dashed fs-6 gy-5">
+            <table id="partner-table" class="table align-middle table-row-dashed fs-6 gy-5">
                 <thead>
                     <tr class="fw-semibold fs-6 text-muted">
                         <th class="text-start min-w-100px">No</th>
-                        <th class="text-start min-w-100px">Foto Profil</th>
+                        <th class="text-start min-w-100px">Gambar</th>
                         <th class="text-end min-w-100px">Actions</th>
                     </tr>
                 </thead>
@@ -47,7 +47,7 @@
 @endsection
 @push('scripts')
     <script>
-        var datatable = $('#testimoni-table').DataTable({
+        var datatable = $('#partner-table').DataTable({
             processing: true,
             serverSide: true,
             ordering: true,
@@ -63,36 +63,11 @@
                     width: '10%'
                 },
                 {
-                    data: 'profile',
-                    name: 'profile',
+                    data: 'image',
+                    name: 'image',
                     orderable: true,
                     searchable: true,
                     width: '30%'
-                },
-                {
-                    data: 'name',
-                    name: 'name',
-                    orderable: true,
-                    searchable: true,
-                    width: '30%'
-                },
-                {
-                    data: 'description',
-                    name: 'description',
-                    orderable: true,
-                    searchable: true,
-                    width: '30%',
-                    render: function(data, type, row) {
-                        if (type === 'display') {
-                            if (data.length > 100) {
-                                return data.slice(0, 100);
-                            } else {
-                                return data;
-                            }
-                        } else {
-                            return data;
-                        }
-                    }
                 },
                 {
                     data: 'actions',
@@ -129,7 +104,7 @@
                 if (result.isConfirmed) {
                     e.preventDefault();
                     var id = $(this).data("id");
-                    var route = "{{ route('Testimoni.destroy', ':id') }}";
+                    var route = "{{ route('Partner.destroy', ':id') }}";
                     route = route.replace(':id', id);
                     $.ajax({
                         url: route,

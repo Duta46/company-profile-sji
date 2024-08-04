@@ -5,6 +5,9 @@
     height: 40px;
     width: auto;
 }
+.navbar{
+    z-index: 1000;
+}
 .navbar-nav .nav-item {
     margin-right: 15px; /* Atur jarak antar item */
 }
